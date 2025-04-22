@@ -14,6 +14,12 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.17.3",
       "toolsId": "dd78fd5b-f4a5-442a-bbdf-e1471f556f82"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/V2/Northwind/Northwind.svc/",
+        "type": "OData"
+      }
     }
   },
   "sap.ui": {
@@ -50,6 +56,18 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "logaligroup.invoices.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
         }
       }
     },

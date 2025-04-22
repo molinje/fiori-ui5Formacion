@@ -24,9 +24,9 @@
                     class="sapUiSmallMargin"
                 />
                 <!-- con la propiedad value , el valor que llegue a este control lo pasamos a una variable
-                en este caso lo colocamos en la propiedad  ShipName del modelo selectionScreen--> 
+                en este caso lo colocamos en la propiedad  ShipName del modelo selectionScreen-->
                 <Input
-                    id="shipName"                    
+                    id="shipName"
                     value="{selectionScreen>/ShipName}"
                     width="200px"
                     class="sapUiSmallMarginEnd"
@@ -36,32 +36,61 @@
                     text="{i18n>country}"
                     class="sapUiSmallMargin"
                 />
-                 <!-- con la propiedad selectedKey , el valor del key seleccionado lo enviamos a una variable
-                en este caso lo colocamos en la propiedad  CountryKey del modelo selectionScreen--> 
-                <Select 
-                    id="slCountry" 
-                    selectedKey="{selectionScreen>/CountryKey}" 
+                <!-- con la propiedad selectedKey , el valor del key seleccionado lo enviamos a una variable
+                en este caso lo colocamos en la propiedad  CountryKey del modelo selectionScreen-->
+                <Select
+                    id="slCountry"
+                    selectedKey="{selectionScreen>/CountryKey}"
                     forceSelection="false"
                     items="{selectionScreen>/Countries}"
-                    visible="true">
+                    visible="true"
+                >
                     <items>
-                    <core:Item id="_IDGenItem" key="{selectionScreen>key}" text="{selectionScreen>text}"/>
+                        <core:Item
+                            id="_IDGenItem"
+                            key="{selectionScreen>key}"
+                            text="{selectionScreen>text}"
+                        />
                     </items>
                 </Select>
-                <Button 
-                    id="btnFilter" 
-                    text="{i18n>btnFilter}" 
-                    icon="sap-icon://filter" 
-                    press="onFilter" 
-                    class="sapUiSmallMarginEnd"/>
+                <Button
+                    id="btnFilter"
+                    text="{i18n>btnFilter}"
+                    icon="sap-icon://filter"
+                    press="onFilter"
+                    class="sapUiSmallMarginEnd"
+                />
 
-                <Button 
-                    id="btnClearFilter" 
-                    text="{i18n>btnClearFilter}" 
-                    icon="sap-icon://clear-filter" 
-                    press="onFilterClear" 
-                    class="sapUiSmallMarginEnd"/>    
-                
+                <Button
+                    id="btnClearFilter"
+                    text="{i18n>btnClearFilter}"
+                    icon="sap-icon://clear-filter"
+                    press="onFilterClear"
+                    class="sapUiSmallMarginEnd"
+                />
+            </Panel>
+
+            <Panel id="_IDGenPanel">
+                <List
+                    id="invoicesList"
+                    headerText="{i18n>invoicesHeaderList}"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{/Invoices}"
+                >
+                    <items>
+                        <ObjectListItem 
+                        id="_IDGenObjectListItem" 
+                        title="{ShipName} - {ShipCountry}" 
+                        number="{ parts : [ {path: 'ExtendedPrice'},
+                                           {path: 'selectionScreen>/Currency'}],
+                                           type: 'sap.ui.model.type.Currency',
+                                           formatOptions: { showMeasure: false}
+                                            }"
+                        numberUnit="{selectionScreen>/Currency}"
+                        numberState="{= ${ExtendedPrice} > 100 ? 'Success' : 'Warning'}"/>
+                    </items>
+                </List>
             </Panel>
         </content>
     </Page>

@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "invoices-config1",
+      "name": "invoices-configoData",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -23,7 +23,10 @@
       "outputCapture": "std",
       "env": {
         "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/invoices\"}",
-        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"path\":\"/V2\",\"url\":\"http://northwind.dest\"}]",
+        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
+        "FIORI_TOOLS_UI5_VERSION": "1.132.1",
+        "FIORI_TOOLS_UI5_URI": "https://ui5.sap.com"
       }
     }
   ]
